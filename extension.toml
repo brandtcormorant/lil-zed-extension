@@ -1,0 +1,11 @@
+id = "lil"
+name = "lil"
+version = "0.1.0"
+description = "Syntax highlighting for the lil language"
+repository = ""
+authors = ["Brandt Cormorant <brandtcormorant@proton.me>"]
+schema_version = 1
+
+[grammars.lil]
+repository = "https://github.com/brandtcormorant/tree-sitter-lil"
+rev = "1014250d1883bdd441ec663486ba1bda7161d5f1"
