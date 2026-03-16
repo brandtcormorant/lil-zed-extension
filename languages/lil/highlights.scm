@@ -4,6 +4,8 @@
 "match" @keyword
 "continue" @keyword
 "return" @keyword
+"enum" @keyword
+"type" @keyword
 
 ; Literals
 (true) @constant.builtin
@@ -12,7 +14,6 @@
 (integer) @number
 (float) @number
 (string) @string
-(tag) @string.special.symbol
 
 ; Comments
 (comment) @comment
@@ -21,9 +22,8 @@
 (identifier) @variable
 
 ; Function definitions — parameter names
-(function_definition
-  parameters: (parameter_list
-    (identifier) @variable.parameter))
+(parameter
+  name: (identifier) @variable.parameter)
 
 ; Let binding name
 (let_declaration
@@ -50,11 +50,44 @@
 (table_field
   key: (identifier) @property)
 
-; Match arm patterns
+; Enum definition name: let Color = enum { ... }
+(let_declaration
+  name: (identifier) @type
+  value: (enum_definition))
+
+; Enum variant names
+(enum_variant
+  name: (identifier) @variant)
+
+; Type declaration name: type Point = ...
+(type_declaration
+  name: (identifier) @type)
+
+; Type identifiers in annotations
+(type_identifier
+  (identifier) @type)
+
+; Type field names in struct types: { x: number, y: number }
+(type_field
+  name: (identifier) @property)
+
+; Match arm patterns — binding identifiers
 (match_arm
   pattern: (identifier) @variable.parameter)
-(match_arm
-  pattern: (tag) @string.special.symbol)
+
+; Match arm patterns — enum variant: Color.red
+(enum_variant_pattern
+  enum: (identifier) @type)
+(enum_variant_pattern
+  variant: (identifier) @variant)
+(enum_variant_pattern
+  binding: (identifier) @variable.parameter)
+
+; Match arm patterns — direct variant: Value(v)
+(variant_pattern
+  variant: (identifier) @variant)
+(variant_pattern
+  binding: (identifier) @variable.parameter)
 
 ; Operators
 "+" @operator
@@ -71,6 +104,8 @@
 "=" @operator
 "!" @operator
 "=>" @operator
+"->" @operator
+"?" @operator
 
 ; Delimiters
 "(" @punctuation.bracket
@@ -82,4 +117,3 @@
 "," @punctuation.delimiter
 "." @punctuation.delimiter
 ":" @punctuation.delimiter
-

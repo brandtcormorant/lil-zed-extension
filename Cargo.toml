@@ -1,0 +1,11 @@
+[package]
+name = "lil-zed"
+version = "0.0.1"
+edition = "2024"
+
+[lib]
+path = "src/lil.rs"
+crate-type = ["cdylib"]
+
+[dependencies]
+zed_extension_api = "0.7.0"
