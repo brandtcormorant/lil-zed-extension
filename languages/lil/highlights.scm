@@ -18,6 +18,10 @@
 ; Comments
 (comment) @comment
 
+; Labels
+(label
+  (identifier) @label)
+
 ; Identifiers
 (identifier) @variable
 

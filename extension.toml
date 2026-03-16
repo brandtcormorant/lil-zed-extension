@@ -12,4 +12,4 @@ languages = ["lil"]
 
 [grammars.lil]
 repository = "https://github.com/brandtcormorant/tree-sitter-lil"
-rev = "7e25cdcd3d3ad049436bc81fced2fe7fc8a1af21"
+rev = "f0700468dd44293f8a37cb9b3a15b5b38c17130e"
