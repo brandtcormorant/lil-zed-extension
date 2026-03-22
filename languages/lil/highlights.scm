@@ -1,6 +1,6 @@
 ; Keywords
 "let" @keyword
-"fn" @keyword
+"function" @keyword
 "match" @keyword
 "continue" @keyword
 "return" @keyword
@@ -107,7 +107,6 @@
 ">=" @operator
 "=" @operator
 "!" @operator
-"=>" @operator
 "->" @operator
 "?" @operator
 
