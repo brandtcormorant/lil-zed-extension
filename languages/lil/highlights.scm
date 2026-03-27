@@ -6,6 +6,12 @@
 "return" @keyword
 "enum" @keyword
 "type" @keyword
+"try" @keyword
+"while" @keyword
+"if" @keyword
+"else" @keyword
+"and" @keyword.operator
+"or" @keyword.operator
 
 ; Literals
 (true) @constant.builtin
@@ -78,6 +84,10 @@
 ; Match arm patterns — binding identifiers
 (match_arm
   pattern: (identifier) @variable.parameter)
+
+; Match arm binding capture: pattern |name| { body }
+(match_arm
+  binding: (identifier) @variable.parameter)
 
 ; Match arm patterns — enum variant: Color.red
 (enum_variant_pattern
