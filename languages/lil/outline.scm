@@ -6,8 +6,9 @@
   name: (identifier) @name
   value: (enum_definition)) @item
 
-(type_declaration
-  name: (identifier) @name) @item
+(let_declaration
+  name: (identifier) @name
+  value: (struct_definition)) @item
 
 (let_declaration
   name: (identifier) @name) @item

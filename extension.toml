@@ -1,7 +1,7 @@
 id = "lil"
 name = "lil"
 version = "0.1.0"
-description = "Support for lil is brought to you by this extension."
+description = "Support for lil is brought to you by this extension and developers like you."
 repository = "https://github.com/brandtcormorant/lil-zed"
 authors = ["Brandt Cormorant <brandtcormorant@proton.me>"]
 schema_version = 1
@@ -12,4 +12,4 @@ languages = ["lil"]
 
 [grammars.lil]
 repository = "https://github.com/brandtcormorant/tree-sitter-lil"
-rev = "e281b6381b8a456fac31af570086def96d0e1798"
+rev = "b8de2030bd4a240588d3056e8a4965bca677f676"

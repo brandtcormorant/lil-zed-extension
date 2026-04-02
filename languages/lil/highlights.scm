@@ -5,7 +5,10 @@
 "continue" @keyword
 "return" @keyword
 "enum" @keyword
+"struct" @keyword
 "type" @keyword
+"string" @keyword
+"for" @keyword
 "try" @keyword
 "while" @keyword
 "if" @keyword
@@ -20,6 +23,11 @@
 (integer) @number
 (float) @number
 (string) @string
+
+; Template string content
+(template_content) @string
+(template_interpolation
+  "|" @punctuation.special)
 
 ; Comments
 (comment) @comment
@@ -65,13 +73,27 @@
   name: (identifier) @type
   value: (enum_definition))
 
+; Struct definition name: let Point = struct { ... }
+(let_declaration
+  name: (identifier) @type
+  value: (struct_definition))
+
+; Struct construction type name: Point { x: 1 }
+(struct_construction
+  type: (identifier) @type)
+
+; Type alias name: let Handler = type function(String) Number
+(let_declaration
+  name: (identifier) @type
+  value: (type_alias))
+
+; Struct member names
+(struct_member
+  name: (identifier) @property)
+
 ; Enum variant names
 (enum_variant
   name: (identifier) @variant)
-
-; Type declaration name: type Point = ...
-(type_declaration
-  name: (identifier) @type)
 
 ; Type identifiers in annotations
 (type_identifier
@@ -80,6 +102,14 @@
 ; Type field names in struct types: { x: number, y: number }
 (type_field
   name: (identifier) @property)
+
+; For loop bindings
+(for_binding_list
+  (identifier) @variable.parameter)
+
+; Range operators
+".." @operator
+"..." @operator
 
 ; Match arm patterns — binding identifiers
 (match_arm
@@ -117,8 +147,8 @@
 ">=" @operator
 "=" @operator
 "!" @operator
-"->" @operator
 "?" @operator
+"|" @punctuation.special
 
 ; Delimiters
 "(" @punctuation.bracket
